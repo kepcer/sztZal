@@ -1,0 +1,74 @@
+{% load i18n %}
+
+{% load staticfiles %}
+
+{% load bootstrap3 %}
+{% load bootstrap_themes %}
+
+{% bootstrap_styles theme="cosmo" type='min.css' %}
+
+
+{% block bootstrap3_extra_head %}
+  <title>LEP - Best worst players in Poznan</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+{% endblock %}
+
+{% block bootstrap3_extra_head_2 %}
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400&amp;subset=latin-ext" rel="stylesheet"/>
+<link href="{% static 'style.css' %}" rel="stylesheet"/>
+<link href="{% static 'bootstrap-social.css' %}" rel="stylesheet"/>
+<div class="jumbotron text-left">
+        <img src="{% static "lep.png" %}"  style="float:left" />
+  <h2><b>League of Extraordinary Powergamers</b></h2>
+  <p>Poznańscy najlepsi z najgorszych!</p>
+</div>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/index/">Główna</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-left">
+              <li><a href="/news/">Aktualności</a></li>
+              <li><a href="/available_games/">Dostępne gry</a></li>
+              <li><a href="/members/">Członkowie</a></li>
+              <li><a href="/warmachine_players">Gracze W&H</a></li>
+              <li><a href="/photos">Zdjęcia</a></li>
+              </ul>
+          <ul class="nav navbar-nav navbar-right">
+              {% if user.is_authenticated %}
+              <li><a href="/add_game/">Dodaj grę</a></li>
+              <li><a href="/add_photo/">Dodaj zdjęcie</a></li>
+              <li><a href="/account/">Konto {{user.username}}</a></li>
+              <li><a href="/accounts/logout">Wyloguj</a></li>
+              {% else %}
+              <li><a href="/accounts/login">Zaloguj</a></li>
+              {% endif %}
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+{% endblock %}
+
+{% block bootstrap3_page_content %}
+{% endblock %}
+
+{% block bootstrap3_page_footer %}
+    <div class="container-fluid">
+        <hr>
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-6">
+                    <p>Copyright &copy; LEP-space by Kacper Plaza</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+{% endblock %}

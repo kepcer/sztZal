@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% load staticfiles %}
+
+{% load bootstrap3 %}
+{% load bootstrap_themes %}
+
+{% block bootstrap3_extra_head %}
+  <title>LEP - Indeks</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+{% endblock %}
+
+{% block bootstrap3_page_content %}
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="col-sm-6">
+      <h2>League of Extraordinary Powergamers</h2>
+      <p>to grupa grająca w gry planszowe i grę bitewną Warmachine&Hordes.</p>
+      <p>Gramy w maszynę jak cioty, ale i tak mamy dużo zabawy!</p>
+      <p></p>
+      <h2>Spotkania:</h2>
+      <p>Adres: Dom Kultury Orle Gniazdo - osiedle Lecha 43, 60-101 Poznań</p>
+      <p>Czas: Każda środa - od 17:00 do 21:00</p>
+    </div>
+    <div class="col-sm-6">
+      <h2>Aktualności:</h2>
+            {% for news in news_list %}
+              <h3>{{news.title}}</h3>
+              <p><small><i>{{news.created}}</i></small></p>
+              <p>{{news.text}}</p>
+                      <hr>
+            {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

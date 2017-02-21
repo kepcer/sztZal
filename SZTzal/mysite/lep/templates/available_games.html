@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% load staticfiles %}
+
+{% load bootstrap3 %}
+{% load bootstrap_themes %}
+
+{% block bootstrap3_extra_head %}
+  <title>LEP - Dostępne gry</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+{% endblock %}
+
+{% block bootstrap3_page_content %}
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="col-sm-6">
+      <h2>Dostępne gry</h2>
+      <p>Członkowie League of Extraordinary Powergamers posiadają wiele gier planszowych.</p>
+      <p>W ramach spotkań można zagrać w gry znajdujące się w poniższej tabeli.</p>
+      <p></p>
+      <h2>Dostępne gry:</h2>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nazwa</th>
+        <th><center>Liczba graczy</center></th>
+        <th>Właściciel</th>
+      </tr>
+    </thead>
+    <tbody>
+                {% for game in game_list %}
+      <tr>
+        <td>{{game.title}}</td>
+        <td><center>{{game.numberOfPlayers}}</center></td>
+        <td>{{game.owner.username}}</td>
+      </tr>
+                {% endfor %}
+    </tbody>
+  </table>
+    </div>
+    <div class="col-sm-6">
+      <h2>Aktualności:</h2>
+            {% for news in news_list %}
+              <h3>{{news.title}}</h3>
+                <p><small><i>{{news.created}}</i></small></p>
+              <p>{{news.text}}</p>
+                              <hr>
+            {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

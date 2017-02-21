@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% load staticfiles %}
+
+{% load bootstrap3 %}
+{% load bootstrap_themes %}
+
+{% block bootstrap3_extra_head %}
+  <title>LEP - Dodaj zdjęcie</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+{% endblock %}
+
+{% block bootstrap3_page_content %}
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="col-sm-6">
+      <h2>Dodaj zdjęcie</h2>
+      <p>tutaj możesz dodać zdjęcie</p>
+      <p></p>
+<form action="." method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+  Nazwa:<br>
+  <input type="text" name="title"}>
+  <br>
+  Zdjęcie:<br>
+  <input type="file" name="img" accept="image/*">
+  <br><br>
+  <input type="submit" value="Submit">
+</form>
+    </div>
+    <div class="col-sm-6">
+      <h2>Aktualności:</h2>
+            {% for news in news_list %}
+              <h3>{{news.title}}</h3>
+                <p><small><i>{{news.created}}</i></small></p>
+              <p>{{news.text}}</p>
+                              <hr>
+            {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

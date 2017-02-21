@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% load staticfiles %}
+
+{% load bootstrap3 %}
+{% load bootstrap_themes %}
+
+{% block bootstrap3_extra_head %}
+  <title>LEP - Zdjęcia</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+{% endblock %}
+
+{% block bootstrap3_page_content %}
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="col-sm-6">
+      <h2>Zdjęcia</h2>
+      <p>Na tej stronie znajdują się zdjęcia, wrzucone przez użytkowników.</p>
+      <p></p>
+        {% for photo in photo_list %}
+
+        <a href="{{MEDIA_URL}}{{photo.image}}"><h3>{{photo.title}}</h3></a>
+              <p><small><i>{{photo.author}} - {{photo.created}}</i></small></p>
+        <img src="{{MEDIA_URL}}{{photo.image}}" height="300" width="300"/>
+                {% endfor %}
+    </div>
+    <div class="col-sm-6">
+      <h2>Aktualności:</h2>
+            {% for news in news_list %}
+              <h3>{{news.title}}</h3>
+                <p><small><i>{{news.created}}</i></small></p>
+              <p>{{news.text}}</p>
+                              <hr>
+            {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% load staticfiles %}
+
+{% load bootstrap3 %}
+{% load bootstrap_themes %}
+
+{% block bootstrap3_extra_head %}
+  <title>LEP - Członkowie</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+{% endblock %}
+
+{% block bootstrap3_page_content %}
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="col-sm-6">
+      <h2>Członkowie grupy</h2>
+      <p>League of Extraordinary powergamers jest złożona z wielu osób.</p>
+      <p>W grupie zarejestrowane są osoby ze znajdującej się poniżej tabeli.</p>
+      <p></p>
+      <h2>Członkowie:</h2>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Ksywa</th>
+        <th><center></center></th>
+        <th>Ranga</th>
+      </tr>
+    </thead>
+    <tbody>
+                {% for member in member_list %}
+      <tr>
+        <td>{{member.user.username}}</td>
+        <td><center></center></td>
+        <td>{{member.rank}}</td>
+      </tr>
+                {% endfor %}
+    </tbody>
+  </table>
+    </div>
+    <div class="col-sm-6">
+      <h2>Aktualności:</h2>
+            {% for news in news_list %}
+              <h3>{{news.title}}</h3>
+                <p><small><i>{{news.created}}</i></small></p>
+              <p>{{news.text}}</p>
+                              <hr>
+            {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

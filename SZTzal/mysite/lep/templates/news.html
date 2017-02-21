@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% load staticfiles %}
+
+{% load bootstrap3 %}
+{% load bootstrap_themes %}
+
+{% block bootstrap3_extra_head %}
+  <title>LEP - Aktualności</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+{% endblock %}
+
+{% block bootstrap3_page_content %}
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="col-sm-6">
+      <h2>Archiwum aktualności</h2>
+      <p>Ta strona zawiera wszystkie wpisy aktualności.</p>
+    </div>
+    <div class="col-sm-6">
+      <h2>Aktualności:</h2>
+            {% for news in news_list %}
+              <h3>{{news.title}}</h3>
+              <p><small><i>{{news.created}}</i></small></p>
+              <p>{{news.text}}</p>
+                      <hr>
+            {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
